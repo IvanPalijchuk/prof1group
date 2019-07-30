@@ -1,0 +1,27 @@
+.image {
+	position: relative;
+}
+.rb-tl {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 999;
+}
+.rb-tr {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 999;
+}
+.rb-bl {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	z-index: 999;
+}
+.rb-br {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	z-index: 999;
+}

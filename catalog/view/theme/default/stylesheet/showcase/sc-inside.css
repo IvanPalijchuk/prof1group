@@ -1,0 +1,199 @@
+/*
+ * ShowCase v2.1.0
+ * Copyright 2016, iDiY
+ * Support: info@idiy.club
+ */
+
+/* Main Style */
+.sc-main:before, .sc-main:after, .sc-main .sc-grid:before, .sc-main .sc-grid:after, .sc-main .item-wrapper:before, .sc-main .item-wrapper:after {
+    display: table;
+    content: ' ';
+}
+.sc-main:after, .sc-main .sc-grid:after, .sc-main .item-wrapper:after {
+    clear: both;
+}
+.sc-main .sc-grid {
+    position: relative;
+    display: none;
+    margin-bottom: 20px;
+}
+.sc-main .sc-grid .item-container {
+    float: left;
+}
+.sc-main .sc-grid .item-wrapper {
+    margin-bottom: 20px;
+}
+.sc-main .item-image a {
+    display: block;
+    overflow: hidden;
+    outline: none;
+}
+.sc-main img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-right: auto;
+    margin-left: auto;
+    vertical-align: middle;
+    border: 0;
+}
+
+
+/* Default Style */
+.showcase .item-wrapper {
+    border: 1px solid #ddd;
+    background-color: #f7f7f7;
+}
+.showcase .item-wrapper:hover .item-heading a {
+    color: #23a1d1;
+    text-shadow: 0 1px 0 #fff;
+}
+
+/* Item Shadow */
+.showcase .item-wrapper {
+    margin-top: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+.showcase .item-wrapper:hover {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+       -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+         -o-box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+}
+
+.showcase .item-heading
+{
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+.showcase .item-heading .item-count
+{
+    line-height: 1;
+    padding: 2px 5px;
+    text-align: center;
+    white-space: nowrap;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #fff;
+}
+.showcase .item-image
+{
+    background-color: #fff;
+}
+.showcase .img-left .item-image
+{
+    float: left;
+    width: 35%;
+}
+.showcase .img-right .item-image
+{
+    float: right;
+    width: 35%;
+}
+.showcase .info-wrapper
+{
+    overflow: hidden;
+    padding: 15px 20px;
+}
+.showcase .item-info a
+{
+    color: #111;
+}
+.showcase .item-info a:hover
+{
+    color: #23a1d1;
+}
+.showcase .item-info .item-heading
+{
+    padding: 0;
+    background-color: transparent;
+}
+.showcase .img-left .item-heading,
+.showcase .img-right .item-heading
+{
+    text-align: left;
+}
+.showcase .item-description
+{
+    font-style: italic;
+    line-height: 1.5;
+    padding: 5px 0;
+}
+.showcase .item-btn
+{
+    margin: 10px 0;
+    text-transform: uppercase;
+}
+.showcase .subcolumn
+{
+    display: table;
+    padding: 5px 0;
+}
+.showcase .subcolumn ul
+{
+    line-height: 1.5;
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.showcase .subcolumn ul + ul
+{
+    padding-left: 15px;
+}
+.showcase .subcolumn li
+{
+    position: relative;
+    margin: 0;
+    padding-left: 12px;
+}
+.showcase .subcolumn li:before
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    content: '\2022';
+    color: #ccc;
+}
+.showcase ul.sublist
+{
+    line-height: 1.5;
+    margin: 0;
+    padding: 5px 0;
+    list-style: none;
+}
+.showcase .sublist li
+{
+    position: relative;
+    display: inline-block;
+    padding-right: 12px;
+}
+.showcase .sublist li:last-child
+{
+    padding-right: 0;
+}
+.showcase .sublist li:after
+{
+    position: absolute;
+    top: 0;
+    right: 2px;
+    display: block;
+    content: '\2022';
+    color: #ccc;
+}
+.showcase .sublist li:last-child:after
+{
+    content: '';
+}
+.showcase .item-wrapper, .showcase a {
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+}

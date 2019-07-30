@@ -1,0 +1,14 @@
+---------- Date: 2019-07-19 11:52:33 ~ IP : 217.20.171.93 ----------
+REQUEST URI : /bryuki-takticheskie-quot511-apex-pantsquot-019-black
+MOD DETAILS:
+   modFile   : /var/www/www-root/data/www/prof1group.ua/vqmod/xml/Menu3rdLevel.xml
+   id        : Menu3rdLevel
+   version   : 0.9.2
+   vqmver    : 2.5.1
+   author    : etss
+
+File Name    : catalog/view/theme/default/template/common/header.tpl(2)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): <li><a href="<?php echo $child['href']; ?>"><?php echo $child['name']; ?></a></li>
+----------------------------------------------------------------------
+
+

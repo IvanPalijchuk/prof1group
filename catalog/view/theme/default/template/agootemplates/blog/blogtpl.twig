@@ -1,0 +1,331 @@
+{{ header }}
+{{ column_left }}{{ column_right }}
+<div id="content">{{ content_top }}
+	{% if (SC_VERSION >= 20) %}
+		<ul class="breadcrumb" xmlns:v="http://rdf.data-vocabulary.org/#">
+		    {% set i=0 %} {% for breadcrumb in breadcrumbs %} {% set i = i + 1 %}
+		    <li typeof="v:Breadcrumb">{% if (count_breadcrumbs != i) %}<a href="{{ breadcrumb['href'] }}" rel="v:url" property="v:title">{% else %}<a href="{{ breadcrumb['href'] }}#" rel="v:url" property="v:title">{% endif %}{{ breadcrumb['text'] }}</a></li>
+		    {% endfor %}
+		</ul>
+	{% else %}
+		<div class="breadcrumb">
+			<span xmlns:v="http://rdf.data-vocabulary.org/#">
+			{% set i=0 %} {% for breadcrumb in breadcrumbs %} {% set i = i + 1 %}
+			<span typeof="v:Breadcrumb">
+			{{ breadcrumb['separator'] }}{% if (count_breadcrumbs != i) %}<a href="{{ breadcrumb['href'] }}" rel="v:url" property="v:title">{% else %}<a href="{{ breadcrumb['href'] }}#" rel="v:url" property="v:title">{% endif %}{{ breadcrumb['text'] }}</a>
+			</span>
+			{% endfor %}
+			</span>
+		</div>
+	{% endif %}
+
+		<h1 class="blog-heading_title-n">{{ heading_title }}</h1>
+
+	    <div class="seocmspro_content blog-content seocmspro_content_main">
+			<div class="divider100"></div>
+			{% if (settings_blog['view_rss'] is defined and settings_blog['view_rss'] ) %}
+			<a href="{{ url_rss }}" class="floatright"><i class="fa fa-rss sc-img-rss" aria-hidden="true"></i></a>
+			<div class="divider100"></div>
+			{% endif %}
+
+			{% if ((description is defined and description) or thumb) %}
+			<div class="blog-info">
+				{% if ((settings_blog['category_big_image_status'] is not defined and thumb) or (thumb and settings_blog['category_big_image_status'] is defined and settings_blog['category_big_image_status'])) %}
+				<div class="image blog-image"><img src="{{ thumb }}" alt="{{ heading_title }}" /></div>
+				{% endif %}
+				{% if (description) %}
+				<div class="blog-description">
+					{{ description }}
+				</div>
+				{% endif %}
+			</div>
+			<div class="divider100 borderbuttom2"></div>
+			{% endif %}
+
+
+			{% if (categories is defined and categories) %}
+			<div class="record_columns_center">
+					{% for blog in categories %}
+					<div class="blog-category-list">
+						<h4><a href="{{ blog['href'] }}">{{ blog['name'] }}{% if (blog['total'] > 0) %} {{ " ("~blog['total']~")" }}{% endif %}						{% if ((blog['thumb'] is defined and settings_blog['subcategory_big_image_status'] is not defined and blog['thumb'] != '') or (blog['thumb'] is defined and blog['thumb'] != '' and settings_blog['subcategory_big_image_status'] is defined and settings_blog['subcategory_big_image_status'] )) %}
+						<div>
+							<img src="{{ blog['thumb'] }}">
+						</div>
+						 {% endif %}</a></h4>
+					</div>
+					{% endfor %}
+			</div>
+			<div class="divider100"></div>
+			{% endif %}
+
+
+		{% if (records) %}
+			<style>
+			 .record_columns .column_width_ {
+			 	width: {% if (settings_blog['block_records_width'] is defined and settings_blog['block_records_width'] != '' ) %}
+			 	 {{ settings_blog['block_records_width']~'; padding-right: 5px;' }}
+			 	{% else %}
+			 	 {{ '100%; min-width: 100%;' }}
+			 	{% endif %}
+
+			 }
+			</style>
+
+			<div class="record_columns">
+
+			{% set record_count = 1 %} {% for record in records %}
+				<div class="content-records column_width_ {% if (record['settings_blog']['first100'] is defined and record['settings_blog']['first100'] and record_count == 1) %}first100{% endif %}">
+				<div class="divider100 ascp_divider margintop2"></div>
+
+                         {% if ((record['settings_blog']['title_status'] is defined and record['settings_blog']['title_status'] and (record['settings_blog']['title_status'] is not defined or record['settings_blog']['title_position'] == 'before' or record['settings_blog']['title_position'] == '1')) or record['settings_blog']['title_status'] is not defined ) %}
+                        <div class="name marginbottom5">
+							<h2 class="ascp-list-title"><a href="{{ record['href'] }}" class="ascp-list-title">{{ record['name'] }}</a></h2>
+						</div>
+						{% endif %}
+
+
+					{% if (record['thumb'] or (record['settings_blog']['images_view'] is defined and record['settings_blog']['images_view']) or (record['settings_blog']['image_status'] is defined and record['settings_blog']['image_status']) or (record['settings_blog']['image_status'] is not defined) ) %}
+
+					<div class="image blog-image{% if (record['settings_blog']['first100'] is defined and record['settings_blog']['first100'] and record['settings_blog']['first100_image'] is defined and record['settings_blog']['first100_image'] and record_count == 1) %} first100{% endif %}">
+
+						{% if ((record['thumb'] and record['settings_blog']['image_status'] is defined and record['settings_blog']['image_status']) or (record['thumb'] and record['settings_blog']['image_status'] is not defined)	) %}
+						<div class="image {% if (settings_blog['title_status'] is defined and settings_blog['title_status'] and (settings_blog['images_position'] is defined and settings_blog['images_position'] == 'after' or record['settings_blog']['title_position'] == '0')) %} blog-image {% endif %}">
+
+							{% if (settings_blog['blog_small_colorbox'] is defined and settings_blog['blog_small_colorbox']) %}
+							<a href="{{ record['popup'] }}" title="{{ record['name'] }}" class="imagebox" rel="imagebox">
+								<img src="{{ record['thumb'] }}" title="{{ record['name'] }}" alt="{{ record['name'] }}" class="record_thumb{% if (record['settings_blog']['first100'] is defined and record['settings_blog']['first100'] and record['settings_blog']['first100_image'] is defined and record['settings_blog']['first100_image'] and record_count == 1) %} first100{% endif %}">
+							</a>
+							{% else %}
+							<a href="{{ record['href'] }}" title="{{ record['name'] }}">
+								<img src="{{ record['thumb'] }}" title="{{ record['name'] }}" alt="{{ record['name'] }}" class="record_thumb{% if (record['settings_blog']['first100'] is defined and record['settings_blog']['first100'] and record['settings_blog']['first100_image'] is defined and record['settings_blog']['first100_image'] and record_count == 1) %} first100{% endif %}"ss>
+							</a>
+							{% endif %}
+						</div>
+						{% endif %}
+
+
+						{% if ((record['settings_blog']['images_view'] is defined and record['settings_blog']['images_view']) ) %} {% set number_hide = 1 %}
+						{% for numi,images in record['images'] %}
+						<div class="image blog-image blog-image-thumb {% if (settings_blog['images_number'] is defined and settings_blog['images_number_hide'] is defined and settings_blog['images_number_hide'] and settings_blog['images_number'] != '' and number_hide > settings_blog['images_number'] ) %} asc_displaynone  {% endif %}">
+
+							<div class="asc_gallery_min">
+							<a href="{{ images['popup'] }}" class="imagebox" rel="imagebox" title="{{ images['title'] }}">
+							<img src="{{ images['thumb'] }}" alt="{{ images['title'] }}" title="{{ images['title'] }}">
+								{% if (settings_blog['images_number'] is defined and settings_blog['images_number_hide'] is defined and settings_blog['images_number_hide'] and settings_blog['images_number'] != '' and number_hide == settings_blog['images_number'] and (record['images_count']-number_hide) != 0 ) %}
+								<div class="asc_gallery_more">
+									<div>
+										<div>{{ "+"~record['images_count']-number_hide }}</div>
+									</div>
+								</div>
+								{% endif %}
+
+							</a>
+							</div>
+
+						</div>
+                        {% set number_hide = number_hide + 1 %} {% endfor %}
+						{% endif %}
+
+					</div>
+
+					{% endif %}
+
+                        {% if (record['settings_blog']['title_status'] is defined and record['settings_blog']['title_status'] and (record['settings_blog']['title_status'] is defined and record['settings_blog']['title_position'] == 'after')) %}
+                        <div class="name marginbottom5">
+						<h2 class="ascp-list-title"><a href="{{ record['href'] }}" class="ascp-list-title">{{ record['name'] }}</a></h2>
+						</div>
+						{% endif %}
+
+					<div class="description record_description">{{ record['description'] }}&nbsp;
+
+					{% if ( record['attribute_groups'] is not empty) %}
+					<div class="sc-attribute">
+							{% for attribute_group in record['attribute_groups'] %}
+							<div class="sc_attribute_group_name">{{ attribute_group['name'] }}</div>
+								{% for attribute in attribute_group['attribute'] %}
+									<span class="sc_attribute_name">{{ attribute['name'] }}</span>
+									<span class="sc_attribute_text">{{ attribute['text'] }}</span>
+								{% endfor %}
+							{% endfor %}
+					</div>
+					{% endif %}
+
+
+					{% if (settings_general['further'] is defined) %}
+						{{ record['further'] }}{% endif %}
+
+					</div>
+
+					<div class="divider100"></div>
+                    <div class="blog_bottom">
+					       	<ul class="ascp_horizont ascp_list_info ul55">
+
+									 {% if (userLogged) %}
+									<li>
+										<a class="zametki" target="_blank" href="{{ admin_path }}index.php?route=catalog/record/update&token={{ token }}&record_id={{ record['record_id'] }}">{{ language.get('text_edit') }}</a>
+									</li>
+									{% endif %}
+
+									{% if (record['settings_blog']['view_date'] is defined and record['settings_blog']['view_date'] ) %}
+									{% if (record['date_available']) %}
+									<li class="blog-data-record">{{ record['date_available'] }}</li>
+									{% endif %}
+									{% endif %}
+
+									{% if (record['settings_blog']['view_viewed'] is defined and record['settings_blog']['view_viewed'] ) %}
+									<li class="blog-viewed-record">{{ text_viewed }} {{ record['viewed'] }}</li>
+									{% endif %}
+
+									{% if (record['settings_blog']['category_status'] is defined and record['settings_blog']['category_status'] ) %}
+									<li class="blog-category-record">{{ language.get('text_category_record') }}<a href="{{ record['blog_href'] }}">{{ record['blog_name'] }}</a></li>
+									{% endif %}
+
+									{% if (record['settings_blog']['author_status'] is defined and record['settings_blog']['author_status'] and record['author'] != '') %}
+									<li class="blog-author-record">{{ text_author }}<a href="{{ record['author_search_link'] }}">{{ record['author'] }}</a></li>
+									{% endif %}
+
+									{% if (record['settings_blog']['view_comments'] is defined and record['settings_blog']['view_comments'] ) %}
+									{% if (record['settings_comment']['status'] is defined and record['settings_comment']['status']) %}
+									<li  class="blog-comments-record">{{ text_comments }} {{ record['comments'] }}</li>
+									{% endif %}
+									{% endif %}
+
+		                 </ul>
+
+		                <ul class="ascp_horizont ascp_list_info ul45">
+
+									{% if (record['settings_blog']['view_share'] is defined and record['settings_blog']['view_share'] ) %}
+									<li class="floatright">
+																				 {{ record['share'] }}
+
+									</li>
+									{% endif %}
+
+									{% if (record['settings_blog']['view_rating'] is defined and record['settings_blog']['view_rating'] ) %}
+									{% if (record['rating']) %}
+										{% if (theme_stars) %}
+										<li class="floatright">
+											<img class="sc-img-stars"  title="{{ record['rating'] }}" alt="{{ record['rating'] }}" src="catalog/view/theme/{{ theme_stars }}/image/blogstars-{{ record['rating'] }}.png">
+										</li>
+										{% endif %}
+									{% endif %}
+									{% endif %}
+
+							</ul>
+                    </div>
+
+					<div class="divider100"></div>
+				</div>
+			{% set record_count = record_count + 1 %} {% endfor %}
+
+			</div>
+
+			<div class="divider100 borderbottom2 margintop2"></div>
+
+			{% if (settings_blog['block_records_width'] is defined and settings_blog['block_records_width'] != '' and settings_blog['block_records_width'] != '100%') %}
+				<div class="record-grid textalignright margintop5 floatleft">
+						<a onclick="records_grid(); return false;" class="floatleft">
+							<ins id="ascp_list" class="ascp_list_grid ascp_list"></ins>
+						</a>
+						<a onclick="records_grid('{{ settings_blog['block_records_width'] }}'); return false;" class="floatleft marginleft5">
+							<ins id="ascp_grid" class="ascp_list_grid ascp_grid_active"></ins>
+						</a>
+				</div>
+			{% endif %}
+
+			{% if ((settings_blog['status_order'] is defined and settings_blog['status_order']) or (settings_blog['status_pagination'] is defined and settings_blog['status_pagination']) or (settings_blog['status_pagination'] is not defined) ) %}
+
+			<div class="record-filter textalignright margintop5">
+		       <ul class="ascp_horizont">
+				{% if ((settings_blog['status_pagination'] is defined and settings_blog['status_pagination']) or (settings_blog['status_pagination'] is not defined) ) %}
+					<li class="sc-float-right">
+
+
+						<div class="sc-blog_result">
+						{{ text_limit }}
+						</div>
+
+						<div class="form-group sc-align-right">
+
+							<select onchange="location = this.value;" class="form-control">
+								{% for limits in limits %}
+								{% if (limits['value'] == limit) %}
+								<option value="{{ limits['href'] }}" selected="selected">{{ limits['text'] }}</option>
+								{% else %}
+								<option value="{{ limits['href'] }}">{{ limits['text'] }}</option>
+								{% endif %}
+								{% endfor %}
+							</select>
+
+                        </div>
+                        <div class="divider100"></div>
+						{% if (SC_VERSION > 15) %}
+						<div class="sc-blog_result">
+						{{ results }}
+						</div>
+						{% endif %}
+
+
+					</li>
+                    {% endif %}
+
+                   {% if (settings_blog['status_order'] is defined and settings_blog['status_order']) %}
+					<li class="sc-float-right">
+
+						<div id="sc-blog_result">
+							{{ text_sort }}
+						</div>
+
+						<div class="form-group sc-align-right">
+
+						<select onchange="location = this.value;" class="form-control">
+							{% for sorts in sorts %}
+							{% if (sorts['value'] == sort ~ '-' ~ order) %}
+							<option value="{{ sorts['href'] }}" selected="selected">{{ sorts['text'] }}</option>
+							{% else %}
+							<option value="{{ sorts['href'] }}">{{ sorts['text'] }}</option>
+							{% endif %}
+							{% endfor %}
+						</select>
+						</div>
+						<div class="divider100"></div>
+						{% if (SC_VERSION > 15) %}
+						<div class="sc-blog_result">
+						&nbsp;
+						</div>
+						{% endif %}
+
+					</li>
+                   {% endif %}
+				</ul>
+			</div>
+			<div class="divider100"></div>
+
+			{% if ((settings_blog['status_pagination'] is defined and settings_blog['status_pagination']) or (settings_blog['status_pagination'] is not defined) ) %}
+				{% if (settings_blog['records_more'] is defined and settings_blog['records_more'] and entry_records_more != '') %}
+					<div id="records_more"><a class="records_more button btn btn-primary">{{ entry_records_more }}</a></div>
+				{% endif %}
+			<div class="pagination margintop5">{{ pagination }}</div>
+			{% endif %}
+
+            {% endif %}
+
+		{% endif %}
+
+
+			{% if ((settings_blog['status_continue'] is defined and settings_blog['status_continue']) and (categories is defined and not categories) and (records is defined and not records)) %}
+			<div class="content">{{ text_empty }}</div>
+			<div class="buttons">
+				<div class="right"><a href="{{ continue }}" class="button"><span>{{ button_continue }}</span></a></div>
+			</div>
+			{% endif %}
+
+
+{% if (settings_blog['reserved'] is defined and settings_blog['reserved'] != '') %}
+	{{ settings_blog['reserved'] }}
+{% endif %}
+
+    </div>
+	{{ content_bottom }}
+ </div>
+{{ footer }}

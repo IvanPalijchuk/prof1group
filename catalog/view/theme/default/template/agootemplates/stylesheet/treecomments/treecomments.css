@@ -1,0 +1,182 @@
+/* begin 	css file widget treecomments SEO CMS */
+.comment-stat {
+    background: #f6f6f6 none repeat scroll 0 0;
+    padding: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 10px;
+    overflow: auto;
+}
+.comment-stat-left {
+float: left;
+overflow: auto;
+display: inline-block;
+}
+
+.comment-stat-right {
+	overflow: visible;
+}
+
+
+.sc-reviews-stat::after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.sc-stat-field {
+	background-color: #11C1F3;
+	color: #fff;
+	font-size: 1em;
+	/* font-weight: bold; */
+	padding: 2px 4px;
+}
+
+
+td.sc-stat-vertical-middle, .sc-stat-vertical-middle {
+    vertical-align: middle;
+}
+
+.sc-reviews-stat {
+    /* background: #fff none repeat scroll 0 0; */
+   /*  border-bottom: 1px solid #ddd; */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.sc-stat-text-center {
+    text-align: center;
+}
+
+.sc-stat-comments .sc-reviews-stat__value {
+    color: #fff;
+}
+
+.sc-stat-comments .sc-reviews-stat__description {
+    color: #fff;
+}
+
+.sc-stat-comments {
+    background: #11c1f3 none repeat scroll 0 0;
+}
+.sc-stat-comments .sc-reviews-stat__corner {
+    border-left-color: #11c1f3;
+}
+.sc-stat-white {
+    background: #fff none repeat scroll 0 0;
+}
+
+.sc-stat-good {
+    background: #F2FCFF none repeat scroll 0 0;
+}
+.sc-stat-good .sc-reviews-stat__corner {
+    border-left-color: #F2FCFF;
+}
+.sc-stat-answer {
+    background: #9BE9FF none repeat scroll 0 0;
+}
+.sc-stat-answer .sc-reviews-stat__corner {
+    border-left-color: #9BE9FF;
+}
+
+.sc-stat-ratings {
+    background: #D6F6FF none repeat scroll 0 0;
+}
+.sc-stat-ratings .sc-reviews-stat__corner {
+    border-left-color: #D6F6FF;
+}
+
+.sc-reviews-stat__description {
+    display: block;
+}
+.sc-stat-big .sc-reviews-stat__description {
+    margin-top: -3px;
+}
+.sc-stat-small .sc-reviews-stat__description {
+    margin-top: -3px;
+    font-size: 11px;
+}
+
+
+.sc-reviews-stat_column {
+    float: left;
+    position: relative;
+}
+
+.sc-stat-white .sc-reviews-stat__value img {
+	margin-top: 9px;
+}
+
+.sc-stat-small .sc-stat-white .sc-reviews-stat__value img {
+    margin-top: 6px;
+}
+
+
+.sc-stat-big .sc-reviews-stat_column {
+    padding: 6px 18px;
+}
+.sc-stat-small .sc-reviews-stat_column {
+    padding: 5px 11px;
+}
+
+.sc-stat-big .sc-stat-good-desc {
+	line-height: 6px;
+	height: 6px;
+}
+
+.sc-stat-small .sc-stat-good-desc {
+	line-height: 8px;
+	height: 8px;
+}
+
+
+.sc-reviews-stat__value {
+    color: #5a5a5a;
+    display: block;
+    font-weight: bold;
+
+}
+
+.sc-stat-big .sc-reviews-stat__value {
+    font-size: 36px;
+    height: 37px;
+    line-height: 100%;
+}
+.sc-stat-small .sc-reviews-stat__value {
+    font-size: 18px;
+    height: 19px;
+    line-height: 100%;
+}
+
+
+.sc-reviews-stat__corner {
+    border: 7px solid transparent;
+    height: 0;
+    left: 100%;
+    margin-top: -7px;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    z-index: 1;
+}
+
+.wysibb-text, .wysibb-text-editor, .wysibb-body, .wysibb-texarea {
+	min-height: 100px !important;
+}
+
+.rating-cancel {
+	width: 0 !important;
+	height: 0 !important;
+}
+.agoo_displaynone {
+	display: none;
+}
+
+.sc-border-none {
+	border: 0px;
+}
+.bordertopnone {
+border-top: 0px solid;
+}
+/* end		css file widget treecomments SEO CMS */
+
+

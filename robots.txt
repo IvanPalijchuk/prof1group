@@ -1,0 +1,10 @@
+User-agent: *
+Disallow: /*&limit
+Disallow: /*?sort
+Disallow: /*&sort
+Disallow: /*?route=checkout/
+Disallow: /*?route=account/
+Disallow: /*?route=product/search
+
+Host:https://prof1group.ua
+Sitemap:https://prof1group.ua/index.php?route=extension/feed/google_sitemap

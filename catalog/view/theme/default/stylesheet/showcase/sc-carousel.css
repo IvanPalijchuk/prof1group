@@ -1,0 +1,152 @@
+/*
+ * ShowCase v2.1.0
+ * Copyright 2016, iDiY
+ * Support: info@idiy.club
+ */
+
+.sc-main .sc-carousel {
+    position: relative;
+    z-index: 1;
+    display: none;
+    width: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+.sc-main .sc-carousel .scc-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+}
+.sc-main .sc-carousel .scc-stage:after {
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: '.';
+}
+.sc-main .sc-carousel .scc-stage-outer {
+    position: relative;
+    overflow: hidden;
+    -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.sc-main .sc-carousel .scc-item {
+    position: relative;
+    float: left;
+    min-height: 1px;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+}
+.sc-main .sc-carousel .scc-nav.disabled, .sc-main .sc-carousel .scc-dots.disabled {
+    display: none;
+}
+.sc-main .sc-carousel .scc-nav .scc-prev, .sc-main .sc-carousel .scc-nav .scc-next, .sc-main .sc-carousel .scc-dot {
+    cursor: pointer;
+    cursor: hand;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+     -khtml-user-select: none;
+}
+.sc-main .sc-carousel.scc-loaded {
+    display: block;
+}
+.sc-main .sc-carousel.scc-loading {
+    display: block;
+    opacity: 0;
+}
+.sc-main .sc-carousel.scc-hidden {
+    opacity: 0;
+}
+.sc-main .sc-carousel.scc-refresh .scc-item {
+    display: none;
+}
+.sc-main .sc-carousel.scc-drag .scc-item {
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.sc-main .sc-carousel.scc-grab {
+    cursor: move;
+    cursor: -webkit-grab;
+    cursor: -o-grab;
+    cursor: -ms-grab;
+    cursor: grab;
+}
+.no-js .sc-main .sc-carousel {
+    display: block;
+}
+
+/*  Carousel Theme  */
+.sc-theme .scc-nav div {
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    margin-top: -32px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #999;
+}
+.sc-theme .scc-nav div i {
+    font-size: 24px;
+}
+.sc-theme .scc-prev {
+    left: 5px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.sc-theme .scc-next {
+    right: 5px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.sc-theme .scc-nav [class*='scc-']:hover {
+    color: #23a1d1;
+}
+.sc-theme .scc-nav .disabled {
+    cursor: default;
+    opacity: 0;
+}
+.sc-main .sc-theme .scc-dots {
+    position: absolute;
+    top: -17px;
+    right: 0;
+}
+.sc-theme .scc-dots {
+    line-height: 1;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+}
+.sc-theme .scc-dots .scc-dot {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+.sc-theme .scc-dots .scc-dot span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin: 3px;
+    -webkit-transition: opacity .3s ease;
+       -moz-transition: opacity .3s ease;
+        -ms-transition: opacity .3s ease;
+         -o-transition: opacity .3s ease;
+            transition: opacity .3s ease;
+
+    -webkit-border-radius: 50%;
+       -moz-border-radius: 50%;
+            border-radius: 50%;
+    background: #d6d6d6;
+    -webkit-backface-visibility: visible;
+}
+.sc-theme .scc-dots .scc-dot.active span, .sc-theme .scc-dots .scc-dot:hover span {
+    background: #23a1d1;
+}
+.sc-theme .scc-nav div {
+    -webkit-transition: all .3s ease;
+       -moz-transition: all .3s ease;
+        -ms-transition: all .3s ease;
+         -o-transition: all .3s ease;
+            transition: all .3s ease;
+}
